@@ -4,13 +4,12 @@
 
 Summary:	Panel for Xfce
 Name:		xfce4-panel
-Version:	4.4.1
-Release:	%mkrel 10
+Version:	4.4.2
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
-Patch0:		%{name}-4.4.1-fix-segfault-with-2nd-panel.patch
 Requires:	desktop-common-data
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	startup-notification-devel >= 0.5
@@ -19,12 +18,12 @@ Obsoletes:	xfce-panel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
-The Xfce 4 Panel supports multiple panels, with many options 
-for their position, appearance, transparency and behavior. 
-There are many items available by default to full fit a panel, 
-like application launchers with detachable menus, a graphical pager, 
-a tasklist, a clock, a system tray, a show/hide desktop switcher, 
-and even more. It offers an easy way to add items using a dialog, 
+The Xfce 4 Panel supports multiple panels, with many options
+for their position, appearance, transparency and behavior.
+There are many items available by default to full fit a panel,
+like application launchers with detachable menus, a graphical pager,
+a tasklist, a clock, a system tray, a show/hide desktop switcher,
+and even more. It offers an easy way to add items using a dialog,
 and to move items accross different panels.
 
 %package -n %{libname}
@@ -48,7 +47,6 @@ Libraries and header files for the %{name} library.
 
 %prep
 %setup -q
-%patch0 -p1 -b .panel
 
 %build
 %configure2_5x \
