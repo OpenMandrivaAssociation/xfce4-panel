@@ -15,6 +15,7 @@ BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	libxml2-devel >= 2.4.0
 Obsoletes:	xfce-panel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The Xfce 4 Panel supports multiple panels, with many options
