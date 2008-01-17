@@ -5,7 +5,7 @@
 Summary:	Panel for Xfce
 Name:		xfce4-panel
 Version:	4.4.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -80,7 +80,7 @@ rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc README ChangeLog AUTHORS
+%doc README AUTHORS
 %doc %{_datadir}/xfce4/doc/C/
 %dir %{_sysconfdir}/X11/xdg/xfce4/panel
 %exclude %{_sysconfdir}/X11/xdg/xfce4/panel/*
@@ -99,7 +99,7 @@ rm -rf %{buildroot}
 
 %files -n %{develname}
 %defattr(-,root,root)
-%doc HACKING README.Plugins
+%doc HACKING README.Plugins ChangeLog 
 %{_libdir}/lib*.so
 %{_libdir}/*a
 %{_libdir}/xfce4/panel-plugins/*.la
