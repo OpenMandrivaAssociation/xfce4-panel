@@ -5,12 +5,12 @@
 Summary:	Panel for Xfce
 Name:		xfce4-panel
 Version:	4.4.2
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
-Requires:	desktop-common-data
+Requires:	desktop-common-data mandriva-xfce-config-common
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	libxml2-devel >= 2.4.0
