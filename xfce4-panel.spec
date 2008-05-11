@@ -50,7 +50,10 @@ Libraries and header files for the %{name} library.
 
 %build
 %configure2_5x \
+%if %mdkversion < 200900
 	--sysconfdir=%{_sysconfdir}/X11
+%endif
+
 %make
 
 %install
