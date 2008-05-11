@@ -85,8 +85,13 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README AUTHORS
 %doc %{_datadir}/xfce4/doc/C/
+%if %mdkversion < 200900
 %dir %{_sysconfdir}/X11/xdg/xfce4/panel
 %exclude %{_sysconfdir}/X11/xdg/xfce4/panel/*
+%else
+%dir %{_sysconfdir}/xdg/xfce4/panel
+%exclude %{_sysconfdir}/xdg/xfce4/panel/*
+%endif
 %{_bindir}/*
 %{_libdir}/xfce4/panel-plugins/*.so
 %{_libdir}/xfce4/mcs-plugins/*.so
