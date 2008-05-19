@@ -2,14 +2,16 @@
 %define libname	%mklibname xfce4panel %{major}
 %define develname %mklibname xfce4panel -d
 
-Summary:	Panel for Xfce
+Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.4.2
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
+Patch0:		%{name}-4.4.2-fix-drag-and-drop-file-over-panel.patch
+Patch1:		%{name}-4.4.2-fix-dialogs-for-multiscreen.patch
 Requires:	desktop-common-data mandriva-xfce-config-common
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	startup-notification-devel >= 0.5
@@ -47,6 +49,8 @@ Libraries and header files for the %{name} library.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 %configure2_5x \
