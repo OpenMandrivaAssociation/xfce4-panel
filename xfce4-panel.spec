@@ -70,13 +70,17 @@ cp %{buildroot}%{_libdir}/pkgconfig/libxfce4panel-1.0.pc %{buildroot}%{_libdir}/
 
 %find_lang %{name}
 
+%if %mdkversion < 200900
 %post
 %{update_menus}
 %update_icon_cache hicolor
+%endif
 
+%if %mdkversion < 200900
 %postun
 %{clean_menus}
 %clean_icon_cache hicolor
+%endif
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
