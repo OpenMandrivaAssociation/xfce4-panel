@@ -4,18 +4,20 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.4.2
-Release:	%mkrel 5
+Version:	4.5.91
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
-Patch0:		%{name}-4.4.2-fix-drag-and-drop-file-over-panel.patch
-Patch1:		%{name}-4.4.2-fix-dialogs-for-multiscreen.patch
-Requires:	desktop-common-data mandriva-xfce-config-common
-BuildRequires:	xfce-mcs-manager-devel >= %{version}
+BuildRequires:	libxfcegui4-devel >= 4.5.91
+BuildRequires:	gtk+2-devel
+BuildRequires:	exo-devel
+BuildRequires:	libwnck-devel
 BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	libxml2-devel >= 2.4.0
+Requires:	desktop-common-data
+Requires:	mandriva-xfce-config-common
 Obsoletes:	xfce-panel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
@@ -49,10 +51,10 @@ Libraries and header files for the %{name} library.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
+%define _disable_ld_no_undefined 1
+
 %configure2_5x \
 %if %mdkversion < 200900
 	--sysconfdir=%{_sysconfdir}/X11
@@ -106,7 +108,6 @@ rm -rf %{buildroot}
 %endif
 %{_bindir}/*
 %{_libdir}/xfce4/panel-plugins/*.so
-%{_libdir}/xfce4/mcs-plugins/*.so
 %{_datadir}/applications/xfce4-panel-manager.desktop
 %{_iconsdir}/hicolor/*
 %{_datadir}/xfce4/panel-plugins/*
@@ -119,10 +120,9 @@ rm -rf %{buildroot}
 
 %files -n %{develname}
 %defattr(-,root,root)
-%doc HACKING README.Plugins ChangeLog 
+%doc HACKING ChangeLog 
 %{_libdir}/lib*.so
 %{_libdir}/*a
 %{_libdir}/xfce4/panel-plugins/*.la
-%{_libdir}/xfce4/mcs-plugins/*.la
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/xfce4/libxfce4panel/*
