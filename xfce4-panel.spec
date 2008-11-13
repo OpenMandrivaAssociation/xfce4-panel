@@ -5,7 +5,7 @@
 Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.5.91
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
