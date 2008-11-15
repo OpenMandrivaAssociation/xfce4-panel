@@ -4,18 +4,19 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.5.91
+Version:	4.5.92
 Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
-BuildRequires:	libxfcegui4-devel >= 4.5.91
+BuildRequires:	libxfcegui4-devel >= %{version}
 BuildRequires:	gtk+2-devel
 BuildRequires:	exo-devel
 BuildRequires:	libwnck-devel
 BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	libxml2-devel >= 2.4.0
+BuildRequires:	gtk-doc
 Requires:	desktop-common-data
 Requires:	mandriva-xfce-config-common
 Obsoletes:	xfce-panel
@@ -59,6 +60,8 @@ Libraries and header files for the %{name} library.
 %if %mdkversion < 200900
 	--sysconfdir=%{_sysconfdir}/X11
 %endif
+	--enable-gtk-doc \
+	--enable-startup-notification
 
 %make
 
