@@ -4,7 +4,7 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.5.99.1
+Version:	4.6.0
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -123,7 +123,7 @@ rm -rf %{buildroot}
 
 %files -n %{develname}
 %defattr(-,root,root)
-%doc HACKING ChangeLog 
+%doc HACKING ChangeLog
 %{_libdir}/lib*.so
 %{_libdir}/*a
 %{_libdir}/xfce4/panel-plugins/*.la
