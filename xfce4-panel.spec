@@ -5,11 +5,12 @@
 Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.6.0
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
+Patch0:		xfce4-panel-4.6.0-as-needed.patch
 BuildRequires:	libxfcegui4-devel >= %{version}
 BuildRequires:	gtk+2-devel
 BuildRequires:	exo-devel
@@ -52,10 +53,9 @@ Libraries and header files for the %{name} library.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%define _disable_ld_no_undefined 1
-
 %configure2_5x \
 %if %mdkversion < 200900
 	--sysconfdir=%{_sysconfdir}/X11
