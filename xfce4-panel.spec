@@ -5,12 +5,15 @@
 Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.6.0
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
 Patch0:		xfce4-panel-4.6.0-as-needed.patch
+Patch1:		xfce4-panel-4.6.0-migrate-launcher-category-icons.patch
+Patch2:		xfce4-panel-4.6.0-dont-crash-when-quit-button-is-pressed.patch
+Patch3:		xfce4-panel-4.6.0-properly-set-the-systray-orientation-property.patch
 BuildRequires:	libxfcegui4-devel >= %{version}
 BuildRequires:	gtk+2-devel
 BuildRequires:	exo-devel
@@ -54,6 +57,9 @@ Libraries and header files for the %{name} library.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %configure2_5x \
