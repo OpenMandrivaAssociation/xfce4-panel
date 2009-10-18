@@ -1,17 +1,16 @@
+%define url_ver %(echo %{version} | cut -c 1-3)
 %define major 1
 %define libname	%mklibname xfce4panel %{major}
 %define develname %mklibname xfce4panel -d
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.6.1
-Release:	%mkrel 3
+Version:	4.6.2
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
-Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
-Patch0:		xfce4-panel-4.6.1-open_terminal_with_exo-open.patch
-Patch1:		xfce4-panel-4.6.1-fix-session-restart.patch
+Source0:	http://archive.xfce.org/src/xfce/xfce4-panel/%{url_ver}/%{name}-%{version}.tar.bz2
 BuildRequires:	libxfcegui4-devel >= 4.6.0
 BuildRequires:	gtk+2-devel
 BuildRequires:	exo-devel >= 0.3.100
@@ -54,8 +53,6 @@ Libraries and header files for the %{name} library.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %configure2_5x \
