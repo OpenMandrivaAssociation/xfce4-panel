@@ -57,14 +57,16 @@ Libraries and header files for the %{name} library.
 
 %prep
 %setup -q
+%if %mdkversion >= 201000
 %patch0 -p1
+%endif
 
 %build
 %configure2_5x \
 %if %mdkversion < 200900
 	--sysconfdir=%{_sysconfdir}/X11
 %endif
-	--enable-gtk-doc \
+	--disable-gtk-doc \
 	--enable-startup-notification
 
 %make
