@@ -11,6 +11,10 @@ License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/xfce4-panel/%{url_ver}/%{name}-%{version}.tar.bz2
+#needed because of a behaviour change in glib 2.23.1 which makes xfce panels
+#show an unwanted title bar. Might get fixed for glib 2.23.2 (or 2.24), see 
+# https://bugzilla.gnome.org/show_bug.cgi?id=557151#c24
+Patch0:		xfce4-panel-4.6.2-gtkwindow-type.patch
 BuildRequires:	libxfcegui4-devel >= 4.6.0
 BuildRequires:	gtk+2-devel
 BuildRequires:	exo-devel >= 0.3.100
@@ -53,6 +57,7 @@ Libraries and header files for the %{name} library.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure2_5x \
