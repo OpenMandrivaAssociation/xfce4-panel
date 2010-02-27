@@ -6,7 +6,7 @@
 Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.6.3
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -46,7 +46,7 @@ Requires:	gtk-doc
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	lib%{name}-devel = %{version}-%{release}
-Obsoletes:	%mklibname xfce4panel 1 -d
+Obsoletes:	%{mklibname xfce4panel 1 -d} < 4.6.3-2
 
 %description -n %{develname}
 Libraries and header files for the %{name} library.
