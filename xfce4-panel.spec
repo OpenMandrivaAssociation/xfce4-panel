@@ -1,23 +1,24 @@
 %define url_ver %(echo %{version} | cut -c 1-3)
-%define major 1
+%define major 3
 %define libname	%mklibname xfce4panel %{major}
 %define develname %mklibname xfce4panel -d
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.6.4
+Version:	4.7.3
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
-Source0:	http://archive.xfce.org/src/xfce/xfce4-panel/%{url_ver}/%{name}-%{version}.tar.bz2
-BuildRequires:	libxfcegui4-devel >= 4.6.0
+Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
+BuildRequires:	libxfce4ui-devel >= 4.7.2
 BuildRequires:	gtk+2-devel
-BuildRequires:	exo-devel >= 0.3.100
+BuildRequires:	exo-devel >= 0.5.4
 BuildRequires:	libwnck-devel
-BuildRequires:	startup-notification-devel >= 0.5
+BuildRequires:	xfconf-devel >= 4.7.2
 BuildRequires:	libxml2-devel >= 2.4.0
 BuildRequires:	gtk-doc
+BuildRequires:	garcon-devel
 Requires:	desktop-common-data
 Requires:	mandriva-xfce-config-common
 Obsoletes:	xfce-panel
@@ -60,17 +61,13 @@ Libraries and header files for the %{name} library.
 	--sysconfdir=%{_sysconfdir}/X11
 %endif
 	--enable-gtk-doc \
-	--enable-startup-notification
+	--enable-gio-unix
 
 %make
 
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-# remove unneeded devel files
-rm -f %{buildroot}%{_libdir}/xfce4/panel-plugins/*.a
-cp %{buildroot}%{_libdir}/pkgconfig/libxfce4panel-1.0.pc %{buildroot}%{_libdir}/pkgconfig/xfce4-panel-1.0.pc
 
 %find_lang %{name}
 
@@ -99,8 +96,7 @@ rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc README AUTHORS
-%doc %{_datadir}/xfce4/doc/C/
+%doc README AUTHORS NEWS
 %if %mdkversion < 200900
 %dir %{_sysconfdir}/X11/xdg/xfce4/panel
 %exclude %{_sysconfdir}/X11/xdg/xfce4/panel/*
@@ -109,12 +105,13 @@ rm -rf %{buildroot}
 %exclude %{_sysconfdir}/xdg/xfce4/panel/*
 %endif
 %{_bindir}/*
-%{_libdir}/xfce4/panel-plugins/*.so
-%{_datadir}/applications/xfce4-panel-manager.desktop
+%{_libdir}/xfce4/panel/plugins/
+%{_datadir}/applications/*.desktop
 %{_iconsdir}/hicolor/*
 %{_datadir}/xfce4/panel-plugins/*
-%dir %{_datadir}/gtk-doc/html/libxfce4panel
-%{_datadir}/gtk-doc/html/libxfce4panel/*
+%{_libdir}/xfce4/panel/migrate
+%{_libdir}/xfce4/panel/wrapper
+%{_datadir}/gtk-doc/html/libxfce4panel-1.0
 
 %files -n %{libname}
 %defattr(-,root,root)
@@ -122,9 +119,8 @@ rm -rf %{buildroot}
 
 %files -n %{develname}
 %defattr(-,root,root)
-%doc HACKING ChangeLog
+%doc ChangeLog
 %{_libdir}/lib*.so
 %{_libdir}/*a
-%{_libdir}/xfce4/panel-plugins/*.la
 %{_libdir}/pkgconfig/*.pc
-%{_includedir}/xfce4/libxfce4panel/*
+%{_includedir}/xfce4/libxfce4panel-1.0/libxfce4panel/*.h
