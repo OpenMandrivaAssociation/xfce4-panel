@@ -5,7 +5,7 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.7.3
+Version:	4.7.4
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -18,7 +18,7 @@ BuildRequires:	libwnck-devel
 BuildRequires:	xfconf-devel >= 4.7.2
 BuildRequires:	libxml2-devel >= 2.4.0
 BuildRequires:	gtk-doc
-BuildRequires:	garcon-devel
+BuildRequires:	garcon-devel >= 0.1.2
 Requires:	desktop-common-data
 Requires:	mandriva-xfce-config-common
 Obsoletes:	xfce-panel
@@ -57,9 +57,6 @@ Libraries and header files for the %{name} library.
 
 %build
 %configure2_5x \
-%if %mdkversion < 200900
-	--sysconfdir=%{_sysconfdir}/X11
-%endif
 	--enable-gtk-doc \
 	--enable-gio-unix
 
@@ -69,27 +66,10 @@ Libraries and header files for the %{name} library.
 rm -rf %{buildroot}
 %makeinstall_std
 
+# (tpg) this file is in mandriva-xfce-config package
+rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
+
 %find_lang %{name}
-
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%clean_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
 
 %clean
 rm -rf %{buildroot}
@@ -97,13 +77,7 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc README AUTHORS NEWS
-%if %mdkversion < 200900
-%dir %{_sysconfdir}/X11/xdg/xfce4/panel
-%exclude %{_sysconfdir}/X11/xdg/xfce4/panel/*
-%else
 %dir %{_sysconfdir}/xdg/xfce4/panel
-%exclude %{_sysconfdir}/xdg/xfce4/panel/*
-%endif
 %{_bindir}/*
 %{_libdir}/xfce4/panel/plugins/
 %{_datadir}/applications/*.desktop
