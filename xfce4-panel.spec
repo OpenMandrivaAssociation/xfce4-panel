@@ -5,7 +5,7 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.7.5
+Version:	4.7.6
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -18,7 +18,7 @@ BuildRequires:	libwnck-devel
 BuildRequires:	xfconf-devel >= 4.7.2
 BuildRequires:	libxml2-devel >= 2.4.0
 BuildRequires:	gtk-doc
-BuildRequires:	garcon-devel >= 0.1.2
+BuildRequires:	garcon-devel >= 0.1.4
 Requires:	desktop-common-data
 Requires:	mandriva-xfce-config-common
 Obsoletes:	xfce-panel
