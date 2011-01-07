@@ -5,7 +5,7 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.7.6
+Version:	4.7.7
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -78,11 +78,15 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README AUTHORS NEWS
 %dir %{_sysconfdir}/xdg/xfce4/panel
+%dir %{_libdir}/xfce4/panel
+%dir %{_libdir}/xfce4/panel/plugins
+%dir %{_datadir}/xfce4/panel
+%dir %{_datadir}/xfce4/panel/plugins
 %{_bindir}/*
 %{_libdir}/xfce4/panel/plugins/
 %{_datadir}/applications/*.desktop
 %{_iconsdir}/hicolor/*
-%{_datadir}/xfce4/panel-plugins/*
+%{_datadir}/xfce4/panel/plugins/*
 %{_libdir}/xfce4/panel/migrate
 %{_libdir}/xfce4/panel/wrapper
 %{_datadir}/gtk-doc/html/libxfce4panel-1.0
