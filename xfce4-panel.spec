@@ -36,7 +36,7 @@ and to move items accross different panels.
 %package -n %{libname}
 Summary:	Panel library for the Xfce desktop environment
 Group:		Graphical desktop/Xfce
-Obsoletes:	%{mklibname xfce4-panel 1}
+Obsoletes:	%{mklibname xfce4panel 1}
 
 %description -n %{libname}
 Panel library for the Xfce desktop environment.
