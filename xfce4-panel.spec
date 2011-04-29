@@ -6,7 +6,7 @@
 Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.8.3
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -36,6 +36,7 @@ and to move items accross different panels.
 %package -n %{libname}
 Summary:	Panel library for the Xfce desktop environment
 Group:		Graphical desktop/Xfce
+Obsoletes:	%{mklibname xfce4-panel 1}
 
 %description -n %{libname}
 Panel library for the Xfce desktop environment.
