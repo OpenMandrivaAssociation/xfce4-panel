@@ -5,7 +5,7 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.8.5
+Version:	4.8.6
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -59,7 +59,8 @@ Libraries and header files for the %{name} library.
 %build
 %configure2_5x \
 	--enable-gtk-doc \
-	--enable-gio-unix
+	--enable-gio-unix \
+	--disable-static
 
 %make
 
