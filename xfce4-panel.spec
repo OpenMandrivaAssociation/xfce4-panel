@@ -6,7 +6,7 @@
 Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.8.6
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -71,7 +71,11 @@ rm -rf %{buildroot}
 # (tpg) this file is in mandriva-xfce-config package
 rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 
-%find_lang %{name}
+# (tpg) drop libtool files
+rm -f %{buildroot}%{_libdir}/*.la
+rm -f %{buildroot}%{_libdir}/*.a
+
+%find_lang %{name} %{name}.lang
 
 %clean
 rm -rf %{buildroot}
@@ -101,6 +105,5 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc ChangeLog
 %{_libdir}/lib*.so
-%{_libdir}/*a
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/xfce4/libxfce4panel-1.0/libxfce4panel/*.h
