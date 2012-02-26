@@ -89,7 +89,7 @@ rm -rf %{buildroot}
 %dir %{_datadir}/xfce4/panel
 %dir %{_datadir}/xfce4/panel/plugins
 %{_bindir}/*
-%{_libdir}/xfce4/panel/plugins/
+%{_libdir}/xfce4/panel/plugins/*
 %{_datadir}/applications/*.desktop
 %{_iconsdir}/hicolor/*
 %{_datadir}/xfce4/panel/plugins/*
