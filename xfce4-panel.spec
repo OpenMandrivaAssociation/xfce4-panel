@@ -5,24 +5,23 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.8.6
-Release:	%mkrel 3
+Version:	4.9.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
-BuildRequires:	libxfce4ui-devel >= 4.7.2
+BuildRequires:	libxfce4ui-devel >= 4.9.0
 BuildRequires:	gtk+2-devel
-BuildRequires:	exo-devel >= 0.5.4
+BuildRequires:	exo-devel >= 0.7.2
 BuildRequires:	libwnck-devel
-BuildRequires:	xfconf-devel >= 4.7.2
+BuildRequires:	xfconf-devel >= 4.9.0
 BuildRequires:	libxml2-devel >= 2.4.0
 BuildRequires:	gtk-doc
-BuildRequires:	garcon-devel >= 0.1.4
+BuildRequires:	garcon-devel >= 0.1.11
 Requires:	desktop-common-data
 Requires:	mandriva-xfce-config-common
 Obsoletes:	xfce-panel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The Xfce 4 Panel supports multiple panels, with many options
@@ -65,23 +64,14 @@ Libraries and header files for the %{name} library.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 # (tpg) this file is in mandriva-xfce-config package
 rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 
-# (tpg) drop libtool files
-rm -f %{buildroot}%{_libdir}/*.la
-rm -f %{buildroot}%{_libdir}/*.a
-
 %find_lang %{name} %{name}.lang
 
-%clean
-rm -rf %{buildroot}
-
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc README AUTHORS NEWS
 %dir %{_sysconfdir}/xdg/xfce4/panel
 %dir %{_libdir}/xfce4/panel
@@ -98,11 +88,9 @@ rm -rf %{buildroot}
 %{_datadir}/gtk-doc/html/libxfce4panel-1.0
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/lib*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %doc ChangeLog
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
