@@ -43,7 +43,6 @@ Panel library for the Xfce desktop environment.
 %package -n %{develname}
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
-Requires:	gtk-doc
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	lib%{name}-devel = %{version}-%{release}
