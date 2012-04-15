@@ -1,5 +1,5 @@
 %define url_ver %(echo %{version} | cut -c 1-3)
-%define major 3
+%define major 4
 %define libname	%mklibname xfce4panel %{major}
 %define develname %mklibname xfce4panel -d
 
@@ -36,6 +36,7 @@ and to move items accross different panels.
 Summary:	Panel library for the Xfce desktop environment
 Group:		Graphical desktop/Xfce
 Obsoletes:	%{mklibname xfce4panel 1}
+Obsoletes:	%{mklibname xfce4panel 2}
 
 %description -n %{libname}
 Panel library for the Xfce desktop environment.
