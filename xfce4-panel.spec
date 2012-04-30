@@ -5,17 +5,17 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.9.2
-Release:	2
+Version:	4.10.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
-BuildRequires:	libxfce4ui-devel >= 4.9.0
+BuildRequires:	libxfce4ui-devel >= 4.10.0
 BuildRequires:	gtk+2-devel
 BuildRequires:	exo-devel >= 0.7.2
 BuildRequires:	libwnck-devel
-BuildRequires:	xfconf-devel >= 4.9.0
+BuildRequires:	xfconf-devel >= 4.10.0
 BuildRequires:	libxml2-devel >= 2.4.0
 BuildRequires:	gtk-doc
 BuildRequires:	garcon-devel >= 0.1.11
