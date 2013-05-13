@@ -1,6 +1,7 @@
 %define url_ver %(echo %{version} | cut -c 1-3)
 %define major 4
-%define libname	%mklibname xfce4panel %{major}
+%define api 1.0
+%define libname	%mklibname xfce4panel- %{api} %{major}
 %define develname %mklibname xfce4panel -d
 
 Summary:	A Xfce panel
@@ -38,6 +39,7 @@ Group:		Graphical desktop/Xfce
 Obsoletes:	%{mklibname xfce4panel 1}
 Obsoletes:	%{mklibname xfce4panel 2}
 Obsoletes:	%{mklibname xfce4panel 3}
+Obsoletes:	%{mklibname xfce4panel 4} < 4.10.1
 
 %description -n %{libname}
 Panel library for the Xfce desktop environment.
@@ -88,7 +90,7 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %{_datadir}/gtk-doc/html/libxfce4panel-1.0
 
 %files -n %{libname}
-%{_libdir}/lib*.so.%{major}*
+%{_libdir}/lib*%{api}.so.%{major}*
 
 %files -n %{develname}
 %doc ChangeLog
