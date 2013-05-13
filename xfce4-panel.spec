@@ -73,7 +73,7 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %find_lang %{name} %{name}.lang
 
 %files -f %{name}.lang
-%doc README AUTHORS NEWS
+%doc AUTHORS NEWS
 %dir %{_libdir}/xfce4/panel
 %dir %{_libdir}/xfce4/panel/plugins
 %dir %{_datadir}/xfce4/panel
