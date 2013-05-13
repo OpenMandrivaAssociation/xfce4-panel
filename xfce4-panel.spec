@@ -5,20 +5,20 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.10.0
-Release:	3
+Version:	4.10.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
-BuildRequires:	libxfce4ui-devel >= 4.10.0
-BuildRequires:	gtk+2-devel
-BuildRequires:	exo-devel >= 0.7.2
-BuildRequires:	libwnck-devel
-BuildRequires:	xfconf-devel >= 4.10.0
-BuildRequires:	libxml2-devel >= 2.4.0
+BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.10.0
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(exo-1) >= 0.7.2
+BuildRequires:	pkgconfig(libwnck-1.0)
+BuildRequires:	pkgconfig(libxfconf-0) >= 4.10.0
+BuildRequires:	pkgconfig(libxml-2.0) >= 2.4.0
 BuildRequires:	gtk-doc
-BuildRequires:	garcon-devel >= 0.1.11
+BuildRequires:	pkgconfig(garcon-1) >= 0.2.1
 Requires:	desktop-common-data
 #Requires:	mandriva-xfce-config-common
 Obsoletes:	xfce-panel
@@ -68,7 +68,7 @@ Libraries and header files for the %{name} library.
 %makeinstall_std
 
 # (tpg) this file is in mandriva-xfce-config package
-#rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
+rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 
 %find_lang %{name} %{name}.lang
 
@@ -78,7 +78,6 @@ Libraries and header files for the %{name} library.
 %dir %{_libdir}/xfce4/panel/plugins
 %dir %{_datadir}/xfce4/panel
 %dir %{_datadir}/xfce4/panel/plugins
-%{_sysconfdir}/xdg/xfce4/panel/*.xml
 %{_bindir}/*
 %{_libdir}/xfce4/panel/plugins/*
 %{_datadir}/applications/*.desktop
