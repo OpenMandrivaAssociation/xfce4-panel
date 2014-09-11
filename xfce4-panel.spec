@@ -58,6 +58,7 @@ Libraries and header files for the %{name} library.
 %setup -q
 
 %build
+%define _disable_ld_no_undefined 1
 %configure2_5x \
 	--enable-gtk-doc \
 	--enable-gio-unix \
