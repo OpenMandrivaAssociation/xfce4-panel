@@ -87,8 +87,8 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %{_iconsdir}/hicolor/*
 %{_datadir}/xfce4/panel/plugins/*
 %{_libdir}/xfce4/panel/migrate
-%{_libdir}/xfce4/panel/wrapper
-%{_datadir}/gtk-doc/html/libxfce4panel-1.0
+%{_libdir}/xfce4/panel/wrapper-%{api}
+%{_datadir}/gtk-doc/html/libxfce4panel-%{api}
 
 %files -n %{libname}
 %{_libdir}/lib*%{api}.so.%{major}*
@@ -97,4 +97,4 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %doc ChangeLog
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
-%{_includedir}/xfce4/libxfce4panel-1.0/libxfce4panel/*.h
+%{_includedir}/xfce4/libxfce4panel-%{api}/libxfce4panel/*.h
