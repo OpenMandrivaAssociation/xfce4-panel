@@ -58,6 +58,8 @@ Libraries and header files for the %{name} library.
 %setup -q
 
 %build
+PLATFORM_LDFLAGS="-lm"
+
 %configure2_5x \
 	--enable-gtk-doc \
 	--enable-gio-unix \
