@@ -12,6 +12,7 @@ License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
+Patch0:		xfce4-panel-4.11.1-fix-linking.patch
 BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.11
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(exo-1) >= 0.7.2
@@ -56,8 +57,11 @@ Libraries and header files for the %{name} library.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
+NOCONFIGURE=1 xdt-autogen
+
 PLATFORM_LDFLAGS="-lm"
 
 %configure2_5x \
