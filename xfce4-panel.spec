@@ -12,6 +12,7 @@ License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
+Patch0:		xfce4-panel-4.11.1-fix-linking.patch
 BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.11
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(exo-1) >= 0.7.2
@@ -56,8 +57,13 @@ Libraries and header files for the %{name} library.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
+NOCONFIGURE=1 xdt-autogen
+
+PLATFORM_LDFLAGS="-lm"
+
 %configure2_5x \
 	--enable-gtk-doc \
 	--enable-gio-unix \
@@ -85,8 +91,8 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %{_iconsdir}/hicolor/*
 %{_datadir}/xfce4/panel/plugins/*
 %{_libdir}/xfce4/panel/migrate
-%{_libdir}/xfce4/panel/wrapper
-%{_datadir}/gtk-doc/html/libxfce4panel-1.0
+%{_libdir}/xfce4/panel/wrapper-%{api}
+%{_datadir}/gtk-doc/html/libxfce4panel-%{api}
 
 %files -n %{libname}
 %{_libdir}/lib*%{api}.so.%{major}*
@@ -95,4 +101,4 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %doc ChangeLog
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
-%{_includedir}/xfce4/libxfce4panel-1.0/libxfce4panel/*.h
+%{_includedir}/xfce4/libxfce4panel-%{api}/libxfce4panel/*.h
