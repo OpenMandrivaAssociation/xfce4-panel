@@ -6,7 +6,7 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.11.1
+Version:	4.11.2
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -64,7 +64,7 @@ NOCONFIGURE=1 xdt-autogen
 
 PLATFORM_LDFLAGS="-lm"
 
-%configure2_5x \
+%configure \
 	--enable-gtk-doc \
 	--enable-gio-unix \
 	--disable-static
