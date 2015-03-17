@@ -1,6 +1,6 @@
 %define url_ver %(echo %{version} | cut -c 1-3)
 %define major 4
-%define api 1.0
+%define api 2.0
 %define libname	%mklibname xfce4panel- %{api} %{major}
 %define develname %mklibname xfce4panel -d
 
