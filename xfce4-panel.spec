@@ -1,7 +1,10 @@
 %define url_ver %(echo %{version} | cut -c 1-3)
 %define major 4
-%define api 2.0
+%define api 1.0
+%define gtk3api 2.0
+
 %define libname	%mklibname xfce4panel- %{api} %{major}
+%define gtk3libname %mklibname xfce4panel %{gtk3api} %{major}
 %define develname %mklibname xfce4panel -d
 
 Summary:	A Xfce panel
@@ -43,6 +46,13 @@ Obsoletes:	%{mklibname xfce4panel 4} < 4.10.1
 
 %description -n %{libname}
 Panel library for the Xfce desktop environment.
+
+%package -n %{gtk3libname}
+Summary:	Panel library (GTK3 version) for the Xfce desktop environment
+Group:		Graphical desktop/Xfce
+
+%description -n %{gtk3libname}
+Panel library (GTK3 version) for the Xfce desktop environment.
 
 %package -n %{develname}
 Summary:	Libraries and header files for the %{name} library
@@ -98,8 +108,12 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %files -n %{libname}
 %{_libdir}/lib*%{api}.so.%{major}*
 
+%files -n %{gtk3libname}
+%{_libdir}/libxfce4panel-%{gtk3api}.so.%{major}*
+
 %files -n %{develname}
 %doc ChangeLog
-%{_libdir}/lib*.so
-%{_libdir}/pkgconfig/*.pc
-%{_includedir}/xfce4/libxfce4panel-%{api}/libxfce4panel/*.h
+%doc %{_datadir}/gtk-doc/html/libxfce4panel-*/
+%{_libdir}/libxfce4panel-*.so
+%{_libdir}/pkgconfig/libxfce4panel-*.pc
+%{_includedir}/xfce4/libxfce4panel-*/
