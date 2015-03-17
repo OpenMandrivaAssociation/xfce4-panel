@@ -75,7 +75,7 @@ NOCONFIGURE=1 xdt-autogen
 PLATFORM_LDFLAGS="-lm"
 
 %configure \
-	--enable-gtk-doc \
+	--disable-gtk-doc \
 	--enable-gio-unix \
 	--enable-gtk3 \
 	--disable-static
@@ -102,7 +102,7 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %{_iconsdir}/hicolor/*
 %{_datadir}/xfce4/panel/plugins/*
 %{_libdir}/xfce4/panel/migrate
-%{_libdir}/xfce4/panel/wrapper-%{api}
+%{_libdir}/xfce4/panel/wrapper-*
 %{_datadir}/gtk-doc/html/libxfce4panel-%{api}
 
 %files -n %{libname}
@@ -113,7 +113,6 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 
 %files -n %{develname}
 %doc ChangeLog
-%doc %{_datadir}/gtk-doc/html/libxfce4panel-*/
 %{_libdir}/libxfce4panel-*.so
 %{_libdir}/pkgconfig/libxfce4panel-*.pc
 %{_includedir}/xfce4/libxfce4panel-*/
