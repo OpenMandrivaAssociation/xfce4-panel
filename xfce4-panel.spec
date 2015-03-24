@@ -1,20 +1,23 @@
 %define url_ver %(echo %{version} | cut -c 1-3)
 %define major 4
 %define api 1.0
+%define gtk3api 2.0
+
 %define libname	%mklibname xfce4panel- %{api} %{major}
+%define gtk3libname %mklibname xfce4panel %{gtk3api} %{major}
 %define develname %mklibname xfce4panel -d
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.12.0
-Release:	0.1
+Release:	0.2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 Patch0:		xfce4-panel-4.11.1-fix-linking.patch
 BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.12
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(exo-1) >= 0.10.3
 BuildRequires:	pkgconfig(libwnck-1.0)
 BuildRequires:	pkgconfig(libxfconf-0) >= 4.12.0
@@ -44,6 +47,13 @@ Obsoletes:	%{mklibname xfce4panel 4} < 4.10.1
 %description -n %{libname}
 Panel library for the Xfce desktop environment.
 
+%package -n %{gtk3libname}
+Summary:	Panel library (GTK3 version) for the Xfce desktop environment
+Group:		Graphical desktop/Xfce
+
+%description -n %{gtk3libname}
+Panel library (GTK3 version) for the Xfce desktop environment.
+
 %package -n %{develname}
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
@@ -65,8 +75,9 @@ NOCONFIGURE=1 xdt-autogen
 PLATFORM_LDFLAGS="-lm"
 
 %configure2_5x \
-	--enable-gtk-doc \
+	--disable-gtk-doc \
 	--enable-gio-unix \
+	--enable-gtk3 \
 	--disable-static
 
 %make
@@ -91,14 +102,17 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %{_iconsdir}/hicolor/*
 %{_datadir}/xfce4/panel/plugins/*
 %{_libdir}/xfce4/panel/migrate
-%{_libdir}/xfce4/panel/wrapper-%{api}
+%{_libdir}/xfce4/panel/wrapper-*
 %{_datadir}/gtk-doc/html/libxfce4panel-%{api}
 
 %files -n %{libname}
 %{_libdir}/lib*%{api}.so.%{major}*
 
+%files -n %{gtk3libname}
+%{_libdir}/libxfce4panel-%{gtk3api}.so.%{major}*
+
 %files -n %{develname}
 %doc ChangeLog
-%{_libdir}/lib*.so
-%{_libdir}/pkgconfig/*.pc
-%{_includedir}/xfce4/libxfce4panel-%{api}/libxfce4panel/*.h
+%{_libdir}/libxfce4panel-*.so
+%{_libdir}/pkgconfig/libxfce4panel-*.pc
+%{_includedir}/xfce4/libxfce4panel-*/
