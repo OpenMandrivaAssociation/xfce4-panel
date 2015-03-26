@@ -10,7 +10,7 @@
 Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.12.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -79,6 +79,10 @@ PLATFORM_LDFLAGS="-lm"
 	--enable-gio-unix \
 	--enable-gtk3 \
 	--disable-static
+
+# Remove rpaths
+sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
 %make
 
