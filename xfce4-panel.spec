@@ -7,10 +7,12 @@
 %define gtk3libname %mklibname xfce4panel %{gtk3api} %{major}
 %define develname %mklibname xfce4panel -d
 
+%define _disable_rebuild_configure 1
+
 Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.12.0
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -58,6 +60,7 @@ Panel library (GTK3 version) for the Xfce desktop environment.
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
 Requires:	%{libname} = %{version}
+Requires:	%{gtk3libname} = %{version}
 Provides:	%{name}-devel = %{EVRD}
 Provides:	lib%{name}-devel = %{EVRD}
 Obsoletes:	%{mklibname xfce4panel 1 -d} < 4.6.3-2
