@@ -1,4 +1,4 @@
-%define url_ver %(echo %{version} | cut -c 1-3)
+%define url_ver %(echo %{version} | cut -d. -f 1,2)
 %define major 4
 %define api 1.0
 %define gtk3api 2.0
@@ -11,8 +11,8 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.12.0
-Release:	4
+Version:	4.12.2
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
