@@ -11,17 +11,16 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.12.2
+Version:	4.14.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
-Patch0:		xfce4-panel-4.11.1-fix-linking.patch
 BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.12
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(exo-1) >= 0.10.3
-BuildRequires:	pkgconfig(libwnck-1.0)
+BuildRequires:	pkgconfig(libwnck-3.0)
 BuildRequires:	pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.4.0
 BuildRequires:	gtk-doc
@@ -110,7 +109,7 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %{_datadir}/xfce4/panel/plugins/*
 %{_libdir}/xfce4/panel/migrate
 %{_libdir}/xfce4/panel/wrapper-*
-%{_datadir}/gtk-doc/html/libxfce4panel-%{api}
+%{_datadir}/gtk-doc/html/libxfce4panel-*
 
 %files -n %{libname}
 %{_libdir}/lib*%{api}.so.%{major}*
