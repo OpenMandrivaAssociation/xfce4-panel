@@ -11,7 +11,7 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.14.0
+Version:	4.14.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -69,7 +69,7 @@ Libraries and header files for the %{name} library.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 NOCONFIGURE=1 xdt-autogen
@@ -86,10 +86,10 @@ PLATFORM_LDFLAGS="-lm"
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # (tpg) this file is in mandriva-xfce-config package
 rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
