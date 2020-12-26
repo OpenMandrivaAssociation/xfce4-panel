@@ -1,3 +1,6 @@
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
+
 %define url_ver %(echo %{version} | cut -d. -f 1,2)
 %define major 4
 %define api 2.0
