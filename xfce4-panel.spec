@@ -1,30 +1,44 @@
 %define url_ver %(echo %{version} | cut -d. -f 1,2)
 %define major 4
-%define api 1.0
-%define gtk3api 2.0
+%define api 2.0
 
 %define libname	%mklibname xfce4panel- %{api} %{major}
-%define gtk3libname %mklibname xfce4panel %{gtk3api} %{major}
 %define develname %mklibname xfce4panel -d
+
+%define gmajor	2.0
+%define girname	%mklibname xfce4panel-gir %{gmajor}
 
 %define _disable_rebuild_configure 1
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.14.4
+Version:	4.16.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
-BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.12
+
+BuildRequires:	intltool
+BuildRequires:	xfce4-dev-tools
+BuildRequires:	pkgconfig(libxfce4ui-2) >= 4.12
+BuildRequires:	pkgconfig(libxfconf-0) >=  4.13.3
 BuildRequires:	pkgconfig(gtk+-3.0)
-BuildRequires:	pkgconfig(exo-1) >= 0.10.3
+BuildRequires:	pkgconfig(exo-2) >= 0.10.3
 BuildRequires:	pkgconfig(libwnck-3.0)
+BuildRequires:	pkgconfig(gio-2.0)
+BuildRequires:	pkgconfig(gio-unix-2.0)
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gmodule-2.0)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.4.0
 BuildRequires:	gtk-doc
 BuildRequires:	pkgconfig(garcon-1) >= 0.4.0
+BuildRequires:	pkgconfig(garcon-gtk3-1)
+BuildRequires:	pkgconfig(vapigen)
+BuildRequires:	pkgconfig(cairo)
+
 Requires:	desktop-common-data
 Obsoletes:	xfce-panel
 
@@ -48,18 +62,19 @@ Obsoletes:	%{mklibname xfce4panel 4} < 4.10.1
 %description -n %{libname}
 Panel library for the Xfce desktop environment.
 
-%package -n %{gtk3libname}
-Summary:	Panel library (GTK3 version) for the Xfce desktop environment
-Group:		Graphical desktop/Xfce
+%package -n %{girname}
+Summary:	GObject Introspection interface description for %{name}
+Group:		System/Libraries
+Requires:	%{libname} = %{version}-%{release}
 
-%description -n %{gtk3libname}
-Panel library (GTK3 version) for the Xfce desktop environment.
+%description -n %{girname}
+GObject Introspection interface description for %{name}.
+
 
 %package -n %{develname}
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
 Requires:	%{libname} = %{version}
-Requires:	%{gtk3libname} = %{version}
 Provides:	%{name}-devel = %{EVRD}
 Provides:	lib%{name}-devel = %{EVRD}
 Obsoletes:	%{mklibname xfce4panel 1 -d} < 4.6.3-2
@@ -72,7 +87,7 @@ Libraries and header files for the %{name} library.
 %autopatch -p1
 
 %build
-NOCONFIGURE=1 xdt-autogen
+NOCONFIGURE=1
 
 PLATFORM_LDFLAGS="-lm"
 
@@ -112,10 +127,11 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %{_datadir}/gtk-doc/html/libxfce4panel-*
 
 %files -n %{libname}
-%{_libdir}/lib*%{api}.so.%{major}*
+%{_libdir}/libxfce4panel-%{api}.so.%{major}{,.*}
 
-%files -n %{gtk3libname}
-%{_libdir}/libxfce4panel-%{gtk3api}.so.%{major}*
+%files -n %{girname}
+%{_libdir}/girepository-1.0/Libxfce4panel-%{gmajor}.typelib
+
 
 %files -n %{develname}
 %doc ChangeLog
