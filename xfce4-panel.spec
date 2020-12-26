@@ -141,3 +141,5 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 %{_libdir}/libxfce4panel-*.so
 %{_libdir}/pkgconfig/libxfce4panel-*.pc
 %{_includedir}/xfce4/libxfce4panel-*/
+%{_datadir}/gir-1.0/Libxfce4panel-%{gmajor}.gir
+%{_datadir}/vala/vapi/libxfce4panel-%{api}.{deps,vapi}
