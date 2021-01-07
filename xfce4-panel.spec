@@ -1,5 +1,5 @@
-%define _disable_ld_no_undefined 1
-%define _disable_lto 1
+#define _disable_ld_no_undefined 1
+#define _disable_lto 1
 
 %define url_ver %(echo %{version} | cut -d. -f 1,2)
 %define major 4
@@ -104,7 +104,7 @@ PLATFORM_LDFLAGS="-lm"
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
-%make_build
+%make_build LIBS="-lm"
 
 %install
 %make_install
