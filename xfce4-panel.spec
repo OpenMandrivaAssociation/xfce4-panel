@@ -1,6 +1,3 @@
-%define _disable_ld_no_undefined 1
-%define _disable_lto 1
-
 %define url_ver %(echo %{version} | cut -d. -f 1,2)
 %define major 4
 %define api 2.0
@@ -16,7 +13,7 @@
 Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.16.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -104,7 +101,7 @@ PLATFORM_LDFLAGS="-lm"
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
-%make_build
+%make_build LIBS="-lm"
 
 %install
 %make_install
