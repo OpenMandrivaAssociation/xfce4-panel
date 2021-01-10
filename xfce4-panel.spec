@@ -13,7 +13,7 @@
 Summary:	A Xfce panel
 Name:		xfce4-panel
 Version:	4.16.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -58,6 +58,8 @@ Obsoletes:	%{mklibname xfce4panel 1}
 Obsoletes:	%{mklibname xfce4panel 2}
 Obsoletes:	%{mklibname xfce4panel 3}
 Obsoletes:	%{mklibname xfce4panel 4} < 4.10.1
+Obsoletes:      %{_lib}xfce4panel-1.0_4 < 4.16.0-3
+Obsoletes:      %{_lib}xfce4panel2.0_4 < 4.16.0-3
 
 %description -n %{libname}
 Panel library for the Xfce desktop environment.
@@ -94,7 +96,6 @@ PLATFORM_LDFLAGS="-lm"
 %configure \
 	--disable-gtk-doc \
 	--enable-gio-unix \
-	--enable-gtk3 \
 	--disable-static
 
 # Remove rpaths
@@ -131,7 +132,6 @@ rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/Libxfce4panel-%{gmajor}.typelib
-
 
 %files -n %{develname}
 %doc ChangeLog
