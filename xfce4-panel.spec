@@ -54,6 +54,7 @@ and to move items accross different panels.
 %package -n %{libname}
 Summary:	Panel library for the Xfce desktop environment
 Group:		Graphical desktop/Xfce
+Requires:	%{girname} = %{EVRD}
 Obsoletes:	%{mklibname xfce4panel 1}
 Obsoletes:	%{mklibname xfce4panel 2}
 Obsoletes:	%{mklibname xfce4panel 3}
