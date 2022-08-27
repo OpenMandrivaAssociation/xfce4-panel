@@ -12,7 +12,7 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.16.4
+Version:	4.16.5
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -21,6 +21,7 @@ Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.
 
 BuildRequires:	intltool
 BuildRequires:	xfce4-dev-tools
+BuildRequires:	pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:	pkgconfig(libxfce4ui-2) >= 4.12
 BuildRequires:	pkgconfig(libxfconf-0) >=  4.13.3
 BuildRequires:	pkgconfig(gtk+-3.0)
