@@ -12,7 +12,7 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.16.5
+Version:	4.17.5
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -110,7 +110,7 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 %make_install
 
 # (tpg) this file is in mandriva-xfce-config package
-rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
+#rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/panel/*
 
 %find_lang %{name} %{name}.lang
 
