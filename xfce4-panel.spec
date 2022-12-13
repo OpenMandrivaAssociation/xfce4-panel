@@ -122,6 +122,7 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 %dir %{_datadir}/xfce4/panel/plugins
 %{_bindir}/*
 %{_libdir}/xfce4/panel/plugins/*
+%{_sysconfdir}/xdg/xfce4/panel/*
 %{_datadir}/applications/*.desktop
 %{_iconsdir}/hicolor/*
 %{_datadir}/xfce4/panel/plugins/*
