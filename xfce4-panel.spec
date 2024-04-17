@@ -39,6 +39,7 @@ BuildRequires:	pkgconfig(garcon-1) >= 0.4.0
 BuildRequires:	pkgconfig(garcon-gtk3-1)
 BuildRequires:	pkgconfig(vapigen)
 BuildRequires:	pkgconfig(cairo)
+BuildRequires:	pkgconfig(harfbuzz-gobject)
 BuildRequires:	%{_lib}harfbuzz-gir-devel
 
 Requires:	desktop-common-data
