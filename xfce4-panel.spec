@@ -2,17 +2,19 @@
 %define major 4
 %define api 2.0
 
-%define libname	%mklibname xfce4panel- %{api} %{major}
+%define libname	%mklibname xfce4panel
+%define oldlibname %mklibname xfce4panel- 2.0 4
 %define develname %mklibname xfce4panel -d
 
 %define gmajor	2.0
-%define girname	%mklibname xfce4panel-gir %{gmajor}
+%define girname	%mklibname xfce4panel-gir
+%define oldgirname %mklibname xfce4panel-gir 2.0
 
 %define _disable_rebuild_configure 1
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.18.6
+Version:	4.20.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -22,8 +24,8 @@ Source0:	https://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}
 BuildRequires:	intltool
 BuildRequires:	xfce4-dev-tools
 BuildRequires:	pkgconfig(dbusmenu-gtk3-0.4)
-BuildRequires:	pkgconfig(libxfce4ui-2) >= 4.12
-BuildRequires:	pkgconfig(libxfconf-0) >=  4.13.3
+BuildRequires:	pkgconfig(libxfce4ui-2) >= 4.20.0
+BuildRequires:	pkgconfig(libxfconf-0) >=  4.20.0
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(exo-2) >= 0.10.3
 BuildRequires:	pkgconfig(libwnck-3.0)
@@ -32,10 +34,10 @@ BuildRequires:	pkgconfig(gio-unix-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gmodule-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(libxfconf-0) >= 4.12.0
+BuildRequires:	pkgconfig(libxfconf-0) >= 4.20.0
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.4.0
 BuildRequires:	gtk-doc
-BuildRequires:	pkgconfig(garcon-1) >= 0.4.0
+BuildRequires:	pkgconfig(garcon-1)
 BuildRequires:	pkgconfig(garcon-gtk3-1)
 BuildRequires:	pkgconfig(vapigen)
 BuildRequires:	pkgconfig(cairo)
@@ -64,6 +66,7 @@ Obsoletes:	%{mklibname xfce4panel 3}
 Obsoletes:	%{mklibname xfce4panel 4} < 4.10.1
 Obsoletes:      %{_lib}xfce4panel-1.0_4 < 4.16.0-3
 Obsoletes:      %{_lib}xfce4panel2.0_4 < 4.16.0-3
+%rename %{oldlibname}
 
 %description -n %{libname}
 Panel library for the Xfce desktop environment.
@@ -72,6 +75,7 @@ Panel library for the Xfce desktop environment.
 Summary:	GObject Introspection interface description for %{name}
 Group:		System/Libraries
 Requires:	%{libname} = %{version}-%{release}
+%rename %{oldgirname}
 
 %description -n %{girname}
 GObject Introspection interface description for %{name}.
@@ -89,8 +93,7 @@ Obsoletes:	%{mklibname xfce4panel 1 -d} < 4.6.3-2
 Libraries and header files for the %{name} library.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 NOCONFIGURE=1
