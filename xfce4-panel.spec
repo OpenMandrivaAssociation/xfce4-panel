@@ -26,8 +26,11 @@ BuildRequires:	xfce4-dev-tools
 BuildRequires:	pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:	pkgconfig(libxfce4ui-2) >= 4.20.0
 BuildRequires:	pkgconfig(libxfconf-0) >=  4.20.0
+BuildRequires:  pkgconfig(libxfce4windowing-0)
+BuildRequires:  pkgconfig(libxfce4windowingui-0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(exo-2) >= 0.10.3
+BuildRequires:  pkgconfig(gtk-layer-shell-0)
 BuildRequires:	pkgconfig(libwnck-3.0)
 BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gio-unix-2.0)
@@ -40,6 +43,7 @@ BuildRequires:	gtk-doc
 BuildRequires:	pkgconfig(garcon-1)
 BuildRequires:	pkgconfig(garcon-gtk3-1)
 BuildRequires:	pkgconfig(vapigen)
+BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(harfbuzz-gobject)
 BuildRequires:	%{_lib}harfbuzz-gir-devel
