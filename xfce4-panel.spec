@@ -14,7 +14,7 @@
 
 Summary:	A Xfce panel
 Name:		xfce4-panel
-Version:	4.20.4
+Version:	4.20.5
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
