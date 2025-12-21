@@ -21,6 +21,11 @@ Group:		Graphical desktop/Xfce
 URL:		https://www.xfce.org
 Source0:	https://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	intltool
 BuildRequires:	xfce4-dev-tools
 BuildRequires:	pkgconfig(dbusmenu-gtk3-0.4)
